@@ -1,24 +1,29 @@
 {
   "name": "ember-normalizr-shim",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "ember-cli shim for normalizr.js for normalizing activerecord-like REST api data",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "rest",
+    "activerecord",
+    "normalizer"
   ],
   "license": "MIT",
-  "author": "",
+  "author": "Thomas Chen",
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "",
+  "repository": "https://github.com/foxnewsnetwork/ember-normalizr-shim",
   "scripts": {
     "build": "ember build",
     "start": "ember server",
     "test": "ember try:each"
   },
   "dependencies": {
-    "ember-cli-babel": "^5.1.7"
+    "broccoli-stew": "^1.4.0",
+    "ember-cli-babel": "^5.1.7",
+    "ember-rollup": "^0.3.4"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
@@ -41,7 +46,8 @@
     "ember-load-initializers": "^0.5.1",
     "ember-resolver": "^2.0.3",
     "ember-welcome-page": "^1.0.3",
-    "loader.js": "^4.0.10"
+    "loader.js": "^4.0.10",
+    "normalizr": "^3.0.2"
   },
   "engines": {
     "node": ">= 0.12.0"
