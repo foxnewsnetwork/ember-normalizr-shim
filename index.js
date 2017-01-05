@@ -2,22 +2,14 @@
 'use strict';
 const Funnel = require('broccoli-funnel');
 const mergeTrees = require('broccoli-merge-trees');
-const Stew = require('broccoli-stew');
+const { map } = require('broccoli-stew');
 const normalizr = new Funnel('node_modules/normalizr/dist', {
   destDir: 'normalizr',
   files: ['index.js']
 });
 
-const rolledNormalizr = Stew.map(normalizr, (content) => {
-  return `const emberRollup = require('ember-rollup');
-
-  let myModuleExports = {};
-
-  (function(exports) {
-    ${content}
-  })(myModuleExports);
-
-  module.exports = emberRollup(runtimeDependencies, myModuleExports);`
+const transformAMD = (name) => ({
+  using: [{ transformation: 'amd', as: name }]
 });
 
 module.exports = {
@@ -36,13 +28,13 @@ module.exports = {
     const vendor = this.treePaths.vendor;
     // requires ember-cli 2.9+
     // https://github.com/ember-cli/ember-cli/pull/5976
-    app.import(vendor + '/normalizr/index.js');
+    app.import(vendor + '/normalizr/index.js', transformAMD('normalizr'));
 
     return app;
   },
 
   treeForVendor(vendorTree) {
-    const trees = [rolledNormalizr];
+    const trees = [normalizr];
 
     if (vendorTree) {
       trees.push(vendorTree);
