@@ -1,6 +1,6 @@
 {
   "name": "ember-normalizr-shim",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "ember-cli shim for normalizr.js for normalizing activerecord-like REST api data",
   "keywords": [
     "ember-addon",
