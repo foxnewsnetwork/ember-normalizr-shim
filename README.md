@@ -2,10 +2,6 @@
 
 Ember-cli shim for using normalizr https://github.com/paularmstrong/normalizr, a library for building relational data normalizers usefuls.
 
-## Usage
-```sh
-ember g normalizr scene characters:array:character doodads:values:doodad camera:camera light
-```
 
 ## Installation
 
