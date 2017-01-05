@@ -2,11 +2,22 @@
 'use strict';
 const Funnel = require('broccoli-funnel');
 const mergeTrees = require('broccoli-merge-trees');
-const { map } = require('broccoli-stew');
+const Webpack = require('broccoli-webpack');
 const normalizr = new Funnel('node_modules/normalizr/dist', {
   destDir: 'normalizr',
   files: ['index.js']
 });
+
+const PackOpts = {
+  entry: 'normalizr/dist/index.js',
+  output: {
+    filename: 'normalizr/index.js',
+    library: 'normalizr',
+    libraryTarget: 'umd'
+  }
+};
+
+const packedNormalizr = new Webpack([normalizr], PackOpts);
 
 const transformAMD = (name) => ({
   using: [{ transformation: 'amd', as: name }]
@@ -34,7 +45,7 @@ module.exports = {
   },
 
   treeForVendor(vendorTree) {
-    const trees = [normalizr];
+    const trees = [packedNormalizr];
 
     if (vendorTree) {
       trees.push(vendorTree);
