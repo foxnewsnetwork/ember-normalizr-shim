@@ -1,5 +1,7 @@
 # ember-normalizr-shim
 
+[![CircleCI](https://circleci.com/gh/foxnewsnetwork/ember-normalizr-shim.svg?style=svg)](https://circleci.com/gh/foxnewsnetwork/ember-normalizr-shim)
+
 Ember-cli shim for using normalizr https://github.com/paularmstrong/normalizr, a library for building relational data normalizers usefuls.
 
 
