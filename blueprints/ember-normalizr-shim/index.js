@@ -6,7 +6,7 @@ module.exports = {
 
   afterInstall() {
     return this.addPackagesToProject([
-      {name: 'normalizr', target: '^3.0.2'}
+      {name: 'normalizr', target: '^3.1.0'}
     ]);
   }
 };
