@@ -5,13 +5,13 @@ const mergeTrees = require('broccoli-merge-trees');
 const Webpack = require('broccoli-webpack');
 const normalizr = new Funnel('node_modules/normalizr/dist', {
   destDir: 'normalizr',
-  files: ['index.js']
+  files: ['normalizr.js']
 });
 
 const PackOpts = {
-  entry: 'normalizr/dist/index.js',
+  entry: 'normalizr/dist/normalizr.js',
   output: {
-    filename: 'normalizr/index.js',
+    filename: 'normalizr/normalizr.js',
     library: 'normalizr',
     libraryTarget: 'umd'
   }
@@ -39,7 +39,7 @@ module.exports = {
     const vendor = this.treePaths.vendor;
     // requires ember-cli 2.9+
     // https://github.com/ember-cli/ember-cli/pull/5976
-    app.import(vendor + '/normalizr/index.js', transformAMD('normalizr'));
+    app.import(vendor + '/normalizr/normalizr.js', transformAMD('normalizr'));
 
     return app;
   },
